@@ -64,9 +64,6 @@ public class Node {
 
 	@Override
 	public String toString() {
-		if(fils == null){
-			return nom;
-		}
 		String res = fils.isEmpty() ? nom : "("+ nom;
 		for (Node fils : fils) {
 			res += " " + fils.toString();
@@ -77,7 +74,23 @@ public class Node {
 		return res;
 	}
 
+	public String toString(int indent){
+		String res = "  ".repeat(indent);
+		res += fils.isEmpty() ? nom : "("+ nom;
+		for (Node fils : fils) {
+			res += "\n" + fils.toString(indent+1);
+		}
+		if (!fils.isEmpty()) {
+			res += "\n" + "  ".repeat(indent) + ")";
+		}
+		return res;
+	}
+
 	public void afficher() {
 		System.out.println(this.toString());
+	}
+
+	public void afficher(int indent) {
+		System.out.println(this.toString(indent));
 	}
 }

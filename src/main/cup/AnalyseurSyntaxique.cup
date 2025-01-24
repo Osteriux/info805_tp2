@@ -55,9 +55,9 @@ precedence left MUL, DIV, MOD;
 precedence left MOINS_UNAIRE;
 
 /* grammaire */
-// un pg est une sequence d'insctions terminee par point
-program ::= 
-    sequence:s POINT {: arbre.addFils(s); arbre.afficher(); :}
+// un pg est une sequence d'insctions terminee par point // afficher(0) pour avoir un affichage multiligne avec de l'indentation
+program ::=
+    sequence:s POINT {: arbre.addFils(s); /*arbre.afficher(0);*/ arbre.afficher(); :} 
     ;
 
 // une sequence est une suite d'instructions separes par des point virgules 
