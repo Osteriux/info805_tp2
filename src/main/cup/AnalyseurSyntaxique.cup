@@ -41,7 +41,8 @@ terminal PLUS, MOINS, MOINS_UNAIRE, MUL, DIV, MOD, NOT, OR, AND, PAR_G, PAR_D, S
 terminal Integer ENTIER;
 terminal String IDENT;
 /* non terminaux */
-non terminal program, sequence, expression, expr;
+non terminal program;
+non terminal Node sequence, expression, expr;
 
 precedence nonassoc OUTPUT;
 precedence right OR;
@@ -62,7 +63,6 @@ program ::=
 // une sequence est une suite d'instructions separes par des point virgules 
 sequence ::= expression:e SEMI sequence:s {: RESULT = new Node(";", e, s); :}
             | expression:e {: RESULT = e; :}
-            |
             ;
 
 // une expession est soit une affectation ,une              
@@ -85,7 +85,7 @@ expr ::= NOT:op expr:e {: RESULT = new Node("NOT", e); :}
        | expr:e1 MUL expr:e2 {: RESULT = new Node("*", e1, e2); :}
        | expr:e1 DIV expr:e2 {: RESULT = new Node("/", e1, e2); :}
        | expr:e1 MOD expr:e2 {: RESULT = new Node("MOD", e1, e2); :}
-       | MOINS expr:e {: RESULT = new Node("-", e); :}                 %prec MOINS_UNAIRE 
+       | MOINS expr:e {: RESULT = new Node("-", e); :}   %prec MOINS_UNAIRE 
        | OUTPUT expr:e {: RESULT = new Node("OUTPUT", e); :}
        | INPUT {: RESULT = new Node("INPUT"); :}
        | NIL {: RESULT = new Node("NIL"); :}

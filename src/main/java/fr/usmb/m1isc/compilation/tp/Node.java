@@ -20,10 +20,10 @@ public class Node {
 	 * @param nom
 	 * @param fils1
 	 */
-	public Node(String nom, Object fils1) {
+	public Node(String nom, Node fils1) {
 		this.nom = nom;
 		this.fils = new ArrayList<Node>();
-		this.fils.add((Node) fils1);
+		this.fils.add(fils1);
 	}
 
 	/**
@@ -32,11 +32,11 @@ public class Node {
 	 * @param fils1
 	 * @param fils2
 	 */
-	public Node(String nom, Object fils1, Object fils2) {
+	public Node(String nom, Node fils1, Node fils2) {
 		this.nom = nom;
 		this.fils = new ArrayList<Node>();
-		this.fils.add((Node) fils1);
-		this.fils.add((Node) fils2);
+		this.fils.add(fils1);
+		this.fils.add(fils2);
 	}
 
 	/**
@@ -46,21 +46,18 @@ public class Node {
 	 * @param fils2
 	 * @param fils3
 	 */
-	public Node(String nom, Object fils1, Object fils2, Object fils3) {
+	public Node(String nom, Node fils1, Node fils2, Node fils3) {
 		this.nom = nom;
 		this.fils = new ArrayList<Node>();
-		this.fils.add((Node) fils1);
-		this.fils.add((Node) fils2);
-		this.fils.add((Node) fils3);
+		this.fils.add(fils1);
+		this.fils.add(fils2);
+		this.fils.add(fils3);
 	}
 
 	/**
 	 * Ajoute un fils à la liste des fils
 	 * @param fils
 	 */
-	public void addFils(Object fils) {
-		this.fils.add((Node) fils);
-	}
 	public void addFils(Node fils) {
 		this.fils.add(fils);
 	}
